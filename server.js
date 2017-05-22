@@ -9,7 +9,7 @@ var cors = require('cors');
 var images = require('images');
 var expressValidator = require('express-validator');
 mongoose.connect('mongodb://0.0.0.0:27017/DB');
-var urlPort = config.urlPort;
+
 
 //Initialize models defined.
 models.initialize();
@@ -39,8 +39,8 @@ app.get('*', function(req, res){
 });
 
 //Vigilar amb les fotos al fer el deploy
-var port = config.urlPort;	//80 //8080
-var adress = config.ServerUrl; //var adress = "178.62.35.246"; //localhost 
+var port = config.serverPort;	//80 //8080
+var adress = config.serverUrl; //var adress = "178.62.35.246"; //localhost 
 
 http.createServer(app).listen(port, adress, function() {
 	console.log('Conected on local:8080! :D')
