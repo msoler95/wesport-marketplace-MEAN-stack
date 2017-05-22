@@ -95,7 +95,7 @@
                                     <text> {{post.loc.name}}</text>
                                     <br>
                                     <span class="mdi-image-timer"></span>
-                                    <text type="date" > {{post.dateInit}} - {{post.dateEnd}}</text>
+                                    <text type="date" > {{post.dateInit | date :  "dd/MM/y"}} - {{post.dateEnd | date :  "dd/MM/y"}}</text>
                                     <br>
                                     <span class="mdi-editor-attach-money"></span>
                                     <text> {{post.money}} €/h</text>
