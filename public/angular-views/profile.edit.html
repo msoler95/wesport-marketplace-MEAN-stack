@@ -1,0 +1,64 @@
+<!--Form Advance-->
+<br>
+<br>
+
+<div class="container" <div class="row">
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 m6">
+                            <figure class="card-profile-image">
+                                <img ng-src={{imagenAvatar}} alt="profile image" style="width: 250px" class="circle z-depth-2 responsive-img activator">
+                               
+                            </figure>
+                                <input type="file" file-model="myFile"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input  id="first_name" ng-model="userInfo.name" type="text">
+                            <label ng-class="{ active: userInfo.name }" for="first_name">Nombre</label>
+                        </div>
+                        <div class="input-field col s12 m6" style=" margin-bottom: 15px">
+                            <input id="last_name"  ng-model="userInfo.surname" type="text">
+                            <label for="last_name" ng-class="{ active: userInfo.surname }">Apellidos</label>
+                        </div>
+                        <div class="input-field col s12 m6" style=" margin-bottom: 15px">
+                            <input id="last_name"  ng-model="userInfo.contact" type="text">
+                            <label for="last_name" ng-class="{ active: userInfo.contact }">Teléfono de contacto</label>
+                        </div>
+                        <!-- <div class="col s12 m6" >
+                            <div class="switch">
+                                <label>
+                                    Hombre
+                                    <input ng-model="userInfo.gender" type="checkbox">
+                                    <span class="lever"></span> Mujer
+                                </label>
+                            </div>
+                        </div><br><br>
+                        <div class="input-field col s6" style=" margin-bottom: 10px">
+                            <input type="date" id="birthday" ng-model="userInfo.birthday"  class="date-picker">
+                             <label for="birhday" class="active" >Fecha de nacimiento</label>
+                      </div> -->
+                    </div>
+                     <button ng-click="updateInfo()" class="btn waves-effect waves-light right" type="submit" name="action">Modificar
+                                  <i class="mdi-content-send right"></i>
+                                </button>
+                    <br><br>
+                   <!--  <div class="row">
+                        <div class="col s12 m6 l3">
+                          <label for="input-select">¿Qué idiomas hablas?</label>
+                          <select id="input-select" class="browser-default" ng-change="addLanguange(ModelName)" ng-model="ModelName">
+                            <option  ng-repeat="lan in languagesSelect">{{lan}}</option>
+                          </select>
+                        </div>
+                        <div class="col s12 m6 l3">
+                          <div class="chip" ng-repeat="lan in languageChips">{{lan}}<i ng-click="deleteLanguage($index)" class="material-icons mdi-navigation-close"></i></div>
+                        </div>
+                        
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

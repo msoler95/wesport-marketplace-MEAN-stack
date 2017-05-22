@@ -1,0 +1,34 @@
+{
+  "name": "angular-rateit",
+  "version": "3.0.2",
+  "homepage": "https://github.com/akempes/angular-rateit",
+  "authors": [
+    "Arjan Kempes <a_kempes@msn.com>"
+  ],
+  "description": "Angular (star)rating directive without any other dependecies nor jQuery. Inspired by jQuery RateIt.",
+  "main": [
+    "dist/ng-rateit.js",
+    "dist/ng-rateit.css"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "angular": ">=1.2.0"
+  },
+  "keywords": [
+    "Angular",
+    "rating",
+    "stars",
+    "starrating"
+  ],
+  "license": "MIT",
+  "_release": "3.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.2",
+    "commit": "98e9242ea60f0cfeeeae27f34a47e61d19ba3997"
+  },
+  "_source": "https://github.com/akempes/angular-rateit.git",
+  "_target": "^3.0.2",
+  "_originalSource": "angular-rateit",
+  "_direct": true
+}

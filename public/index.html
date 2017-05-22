@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Stop sedentarism with WeSport">
+    <meta name="keywords" content="sports">
+    <title>WeSport</title>
+    <!-- Favicons-->
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+    <!-- CORE CSS-->
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->
+    <link href="css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body ng-app="WeSport" ng-controller='mainCtrl'>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <header id="header" class="page-topbar">
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">
+                        <li>
+                            <h1 class="logo-wrapper"><a class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Materialized</span></h1>
+                        </li>
+                    </ul>
+                    <div class="header-search-wrapper hide-on-med-and-down"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div id="main">
+        <div class="wrapper">
+            <aside id="left-sidebar-nav">
+                <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                    <li class="user-details cyan darken-2">
+                        <div class="row">
+                            <div class="col col s4 m4 l4">
+                                <img ui-sref="{{redirectNombreUsuario}}" src="{{avatarUsuario}}" alt="" class="circle responsive-img valign profile-image">
+                            </div>
+                            <div class="col col s8 m8 l8">
+                                <a ng-click="closeMenu()" class="btn-flat  white-text profile-btn" ui-sref="{{redirectNombreUsuario}}">{{nombreUsuario}}</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li ng-click="closeMenu()" class="bold {{aprenderSelected}}"><a ui-sref="search.search" class="waves-effect waves-cyan"><i class="mdi-action-explore"></i> Aprender</a> </li>
+                    <li ng-click="closeMenu()" class="bold {{loginSelected}}" ng-hide="isAuthenticated"><a ui-sref="login.login" class="waves-effect waves-cyan"><i class="mdi-action-settings-power"></i> Iniciar sesión</a> </li>
+                    <li class="bold {{profileSelected}}" ng-show="isAuthenticated"><a ui-sref="profile.edit" class="waves-effect waves-cyan"><i class="mdi-action-perm-identity
+                    "></i> Mi perfil</a> </li>
+                    <li ng-click="logout();closeMenu()" class="bold" ng-show="isAuthenticated"><a ui-sref="login.login" class="waves-effect waves-cyan"><i class="mdi-action-settings-power"></i> Cerrar sesión</a> </li>
+                    <!-- <li class="bold"><a ui-sref="trabajar" class="waves-effect waves-cyan"><i class="mdi-action-work"></i> Trabajar</a></li> -->
+                </ul>
+                <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan">
+                    <img id="menu-button-img" src="{{avatarUsuario}}" class="circle responsive-img valign profile-image"></img>
+                </a>
+            </aside>
+            <section id="content">
+                <!--Progress bar -->
+                <div ng-show="loadingBar" class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+                <div ui-view></div>
+            </section>
+        </div>
+    </div>
+</body>
+<!-- ================================================ Scripts ================================================ -->
+<!-- /////////////////////////////MATERIALIZE JS/////////////////////////////////////////////// -->
+<!-- jQuery Library -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!--materialize js-->
+<script type="text/javascript" src="js/materialize.js"></script>
+<!--Rangeslider-->
+<link href="js/plugins/ionRangeSlider/css/ion.rangeSlider.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="js/plugins/ionRangeSlider/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet" media="screen,projection">
+<script type="text/javascript" src="js/plugins/ionRangeSlider/js/ion.rangeSlider.js"></script>
+<!--Scrollbar-->
+<script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<!--SweetAlert-->
+<link type="text/css" rel="stylesheet" href="js/plugins/sweetalert/dist/sweetalert.css"></link>
+<script type="text/javascript" src="js/plugins/sweetalert/dist/sweetalert.min.js"></script>
+<!--Images-->
+<script type="text/javascript" src="js/materialize-plugins/materialbox.js"></script>
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script type="text/javascript" src="js/plugins.js"></script>
+<!-- /////////////////////////////ANGULAR JS/////////////////////////////////////////////// -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+<!--Routing-->
+<script type="text/javascript" src="index.js"></script>
+<!--Controllers-->
+<script type="text/javascript" src="angular-controllers/searchController.js"></script>
+<script type="text/javascript" src="angular-controllers/searchController.search.js"></script>
+<script type="text/javascript" src="angular-controllers/searchController.work.js"></script>
+<script type="text/javascript" src="angular-controllers/loginController.js"></script>
+<script type="text/javascript" src="angular-controllers/loginController.login.js"></script>
+<script type="text/javascript" src="angular-controllers/loginController.register.js"></script>
+<script type="text/javascript" src="angular-controllers/loginController.dontRememberPassword.js"></script>
+<script type="text/javascript" src="angular-controllers/loginController.resetPassword.js"></script>
+<script type="text/javascript" src="angular-controllers/profileController.edit.js"></script>
+<!--Services-->
+<script type="text/javascript" src="angular-services/authService.js"></script>
+<script type="text/javascript" src="angular-services/constants.js"></script>
+<script type="text/javascript" src="angular-services/userService.js"></script>
+<script type="text/javascript" src="angular-services/postService.js"></script>
+<!-- /////////////////////////////BOWER/////////////////////////////////////////////// -->
+<!--5 starts (https://github.com/akempes/angular-rateit)-->
+<script src="bower_components/angular-rateit//ng-rateit.js"></script>
+<link rel="stylesheet" href="bower_components/angular-rateit/ng-rateit.css" />
+<!--ng-flags (https://github.com/asafdav/ng-flags)-->
+<link rel="stylesheet" type="text/css" href="http://cloud.github.com/downloads/lafeber/world-flags-sprite/flags16.css" />
+<script src="bower_components/ng-flags/src/directives/ng-flags.js"></script>
+<!-- /////////////////////////////Maps/////////////////////////////////////////////// -->
+<!-- ================================================ End Scripts ================================================ -->
+<script>
+$('.button-collapse').sideNav({
+    menuWidth: 300, // Default is 240
+    edge: 'right', // Choose the horizontal origin
+    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+});
+</script>
+
+</html>
