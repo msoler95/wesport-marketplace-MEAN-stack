@@ -106,7 +106,7 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
 
 
     ///////////////////////////ORDEN////////////////////// 
-    $scope.ordenFiltro = "preu";
+    $scope.ordenFiltro = "dateInit";
     $scope.botonFiltro = "Ordenar por: Precio ↑";
     //Funcio per cancelar els canvis
     $scope.ordenar = function(valorFiltro) {
@@ -143,12 +143,27 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
 
     });
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
 
+    if(dd<10) {
+        dd='0'+dd
+    } 
+
+    if(mm<10) {
+        mm='0'+mm
+    } 
+
+    var today = yyyy+'-'+mm+'-'+dd;
+    console.log("today = " + today)
     //Function for the ng-repeat to filter
     $scope.comparator = function() {
         return function(item) {
+            console.log(item.dateInit);
         	if($scope.modalBusqueda.deporte == 'Cualquier deporte' || $scope.modalBusqueda.deporte == item.sport) {
-        		if($scope.modalBusqueda.fecha == 'Cualquier día' || $scope.modalBusqueda.fecha == item.dateInit)	{
+        		if(($scope.modalBusqueda.fecha == 'Cualquier día' &&  item.dateInit >= today ) || ($scope.modalBusqueda.fecha >= item.dateInit && $scope.modalBusqueda.fecha <= item.dateEnd))	{
         			var valorRangeSliderPrecios = $("#rango_precios").prop("value");
         			if(valorRangeSliderPrecios == undefined) {
         				valorRangeSliderPrecios = [0, 100000];

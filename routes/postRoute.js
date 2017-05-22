@@ -10,6 +10,19 @@ var express_jwt = require('express-jwt');
 ////////  CREATE  /////////
 
 router.post('/createPost', express_jwt({ secret: jwt_secret }), function(req, res, next) {
+    req.assert('sport', 'Falta algun parametro').notEmpty();
+    req.assert('dateInit','Falta algun parametro').notEmpty();
+    req.assert('dateEnd', 'Falta algun parametro').notEmpty();
+    req.assert('money', 'Falta algun parametro').notEmpty();
+    req.assert('contact', 'Falta algun parametro').notEmpty();
+    req.assert('loc', 'Falta algun parametro').notEmpty();
+    var errors = req.validationErrors();
+    if (errors) {
+        console.log(errors);
+        return res.json({ success: false, msg: 'Revisa los campos' });
+    }
+
+    if(req.body.dateInit > req.body.dateEnd) res.json({ success: false, msg: 'La fecha de finalización es menor a la de inicio' });
     User.findOne({ "mail": req.user.mail }).exec(function(err, user) {
         if (err) res.json({ success: false, msg: 'Ha ocurrido un error' });
         else {
@@ -167,7 +180,12 @@ router.post('/getPostsByLocation', function(req, res, next) {
 
 ////////  UPDATE  /////////
 router.post('/updatePost', express_jwt({ secret: jwt_secret }), function(req, res, next) {
-  
+    req.assert('sport', 'Falta algun parametro').notEmpty();
+    req.assert('dateInit','Falta algun parametro').notEmpty();
+    req.assert('dateEnd', 'Falta algun parametro').notEmpty();
+    req.assert('money', 'Falta algun parametro').notEmpty();
+    req.assert('contact', 'Falta algun parametro').notEmpty();
+    req.assert('loc', 'Falta algun parametro').notEmpty();
     Post.findOne({ "_id": req.body._id, "idUser": req.user._id }).exec(function(err, post) {
 
         if (err) {
