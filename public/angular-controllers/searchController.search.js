@@ -163,7 +163,7 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
         return function(item) {
             console.log(item.dateInit);
         	if($scope.modalBusqueda.deporte == 'Cualquier deporte' || $scope.modalBusqueda.deporte == item.sport) {
-        		if(($scope.modalBusqueda.fecha == 'Cualquier día' &&  item.dateInit >= today ) || ($scope.modalBusqueda.fecha >= item.dateInit && $scope.modalBusqueda.fecha <= item.dateEnd))	{
+        		if(($scope.modalBusqueda.fecha == 'Cualquier día' &&  item.dateEnd >= today ) || ($scope.modalBusqueda.fecha >= item.dateInit && $scope.modalBusqueda.fecha <= item.dateEnd))	{
         			var valorRangeSliderPrecios = $("#rango_precios").prop("value");
         			if(valorRangeSliderPrecios == undefined) {
         				valorRangeSliderPrecios = [0, 100000];
