@@ -146,7 +146,7 @@
                             <div ng-model="hola2" class="input-field col s12">
                                 
                                 <select id="select_sport"  ng-model="modalBusqueda.deporte" class="browser-default" required>
-                                    <option value="Qualquier deporte">Qualquier deporte</option>
+                                    <option value="Qualquier deporte" disabled>Qualquier deporte</option>
                                     <option value="Ski">Ski</option>
                                     <option value="Surf">Surf</option>
                                     <option value="Futbol">Futbol</option>
@@ -158,7 +158,7 @@
                             <div class="col s12">
                                 <!-- <label for="last_name">¿Dónde?</label> -->
                                 <label for="pac-input">¿Dónde?</label>
-                                <input ng-model="modalBusqueda.ubicacion" id="pac-input" type="text" placeholder="Search Box">
+                                <input ng-model="modalBusqueda.ubicacion" id="pac-input" type="text" placeholder="Madrid, Barcelona...">
                                 <div id="map"></div>
                                 <!--    <input id="searchTextField" placeholder="Enter a city"  type="text"> -->
                             </div>

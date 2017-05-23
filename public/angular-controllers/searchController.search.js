@@ -16,7 +16,7 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
 
     $scope.modalBusqueda = {
         deporte: 'Cualquier deporte',
-        ubicacion: 'Barcelona',
+        ubicacion: '',
         fecha: 'Cualquier día',
         precio: '5-110',
         nivel: 'Principiante',
@@ -39,62 +39,93 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
 
     //Funcio per quan l'usuari li dona al botó busqueda
     $scope.busca = function() {
+        //Si es modifica la localitzacio
+        if ($scope.modalBusqueda.ubicacion != '') {
+            $rootScope.loadingBar = true;
 
-        $rootScope.loadingBar = true;
+
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('pac-input').value;
+            geocoder.geocode({ 'address': address }, function(results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var coord = {
+                        lat: results[0].geometry.location.lat(),
+                        lng: results[0].geometry.location.lng()
+                    }
+                    PostService.getPostsByLocation(coord).then(function(posts) {
+
+                        $rootScope.loadingBar = false;
+                        $scope.posts = posts;
+                        $('.materialboxed').materialbox();
+
+                        // //Modifiquem el html
+                        if ($scope.modalBusqueda.enGrupo)
+                            var valorIndividual = 'En grupo';
+                        else
+                            var valorIndividual = 'Individual';
+                        if ($scope.modalBusqueda.conMaterial)
+                            var valorMaterial = 'Tengo material';
+                        else
+                            var valorMaterial = 'No tengo material';
+
+                        //Agafem els valors
+                        var valorDeporte = $scope.modalBusqueda.deporte;
+                        var valorDonde = $scope.modalBusqueda.ubicacion;
+                        var valorCuando = $scope.modalBusqueda.fecha;
+                        var valorRangeSliderPrecios = $("#rango_precios").prop("value").split(";");
+                        valorRangeSliderPrecios = valorRangeSliderPrecios[0] + "-" + valorRangeSliderPrecios[1]
+                        var valorRangeSliderNivel = $("#rango_nivel").prop("value");
 
 
-        var geocoder = new google.maps.Geocoder();
-        var address = document.getElementById('pac-input').value;
-        geocoder.geocode({ 'address': address }, function(results, status) {
+                        //Actualitzem la busqueda
+                        $scope.busqueda.deporte = $scope.modalBusqueda.deporte;
+                        $scope.busqueda.ubicacion = valorDonde;
+                        $scope.busqueda.fecha = valorCuando;
+                        $scope.busqueda.precio = valorRangeSliderPrecios;
+                        $scope.busqueda.nivel = valorRangeSliderNivel;
+                        $scope.busqueda.tipo = valorIndividual;
+                        $scope.busqueda.material = valorMaterial;
 
-            if (status == google.maps.GeocoderStatus.OK) {
-                var coord = {
-                    lat: results[0].geometry.location.lat(),
-                    lng: results[0].geometry.location.lng()
+                    }, function(errMsg) {
+                        Materialize.toast(errMsg, 3000);
+
+                    });
+
+                } else {
+                    Materialize.toast('Error buscando la dirección', 3000);
                 }
-                PostService.getPostsByLocation(coord).then(function(posts) {
-                    console.log(posts)
-                    $rootScope.loadingBar = false;
-                    $scope.posts = posts;
-                    $('.materialboxed').materialbox();
-
-                    // //Modifiquem el html
-                    if ($scope.modalBusqueda.enGrupo)
-                        var valorIndividual = 'En grupo';
-                    else
-                        var valorIndividual = 'Individual';
-                    if ($scope.modalBusqueda.conMaterial)
-                        var valorMaterial = 'Tengo material';
-                    else
-                        var valorMaterial = 'No tengo material';
-
-                     //Agafem els valors
-			        var valorDeporte = $scope.modalBusqueda.deporte;
-			        var valorDonde = $scope.modalBusqueda.ubicacion;
-			        var valorCuando = $scope.modalBusqueda.fecha;
-			        var valorRangeSliderPrecios = $("#rango_precios").prop("value").split(";");
-			        valorRangeSliderPrecios = valorRangeSliderPrecios[0] + "-" + valorRangeSliderPrecios[1]
-			        var valorRangeSliderNivel = $("#rango_nivel").prop("value");
+            });
+        } else {
+            $rootScope.loadingBar = true;
+            PostService.getAllPosts({ lat: 41.385451, lng: 2.173850 }).then(function(posts) {
+                $rootScope.loadingBar = false;
+                $scope.posts = posts;
+                $('.materialboxed').materialbox();
+                //Agafem els valors
+                var valorDeporte = $scope.modalBusqueda.deporte;
+                var valorDonde = $scope.modalBusqueda.ubicacion;
+                var valorCuando = $scope.modalBusqueda.fecha;
+                var valorRangeSliderPrecios = $("#rango_precios").prop("value").split(";");
+                valorRangeSliderPrecios = valorRangeSliderPrecios[0] + "-" + valorRangeSliderPrecios[1]
+                var valorRangeSliderNivel = $("#rango_nivel").prop("value");
 
 
-                    //Actualitzem la busqueda
-                    $scope.busqueda.deporte = $scope.modalBusqueda.deporte;
-                    $scope.busqueda.ubicacion = valorDonde;
-                    $scope.busqueda.fecha = valorCuando;
-                    $scope.busqueda.precio = valorRangeSliderPrecios;
-                    $scope.busqueda.nivel = valorRangeSliderNivel;
-                    $scope.busqueda.tipo = valorIndividual;
-                    $scope.busqueda.material = valorMaterial;
+                //Actualitzem la busqueda
+                $scope.busqueda.deporte = valorDeporte;
+                $scope.busqueda.ubicacion = 'Cualquier lugar';
+                $scope.busqueda.fecha = valorCuando;
+                $scope.busqueda.precio = valorRangeSliderPrecios;
+                $scope.busqueda.nivel = valorRangeSliderNivel;
+                $scope.busqueda.tipo = valorIndividual;
+                $scope.busqueda.material = valorMaterial;
+            }, function(errMsg) {
+                Materialize.toast(errMsg, 3000);
 
-                }, function(errMsg) {
-                    Materialize.toast(errMsg, 3000);
+            });
 
-                });
 
-            } else {
-                Materialize.toast('Error buscando la dirección', 3000);
-            }
-        });
+        }
     }
 
     // $scope.inicializeImages = function() {
@@ -120,9 +151,9 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
                 $scope.ordenFiltro = "-money";
                 break;
                 // case "valoracionAsc":
-                // 	$scope.botonFiltro = "Ordenar por: Valoracion ↑";
-                // 	$scope.ordenFiltro = "estrellas";
-                // 	break;
+                //  $scope.botonFiltro = "Ordenar por: Valoracion ↑";
+                //  $scope.ordenFiltro = "estrellas";
+                //  break;
                 // case "valoracionDesc":
                 // $scope.botonFiltro = "Ordenar por: Valoracion ↓";
                 // $scope.ordenFiltro = "-estrellas";
@@ -145,38 +176,34 @@ app.controller('searchCtrl.search', function($scope, PostService, $rootScope) {
 
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
 
-    if(dd<10) {
-        dd='0'+dd
-    } 
+    if (dd < 10) {
+        dd = '0' + dd
+    }
 
-    if(mm<10) {
-        mm='0'+mm
-    } 
+    if (mm < 10) {
+        mm = '0' + mm
+    }
 
-    var today = yyyy+'-'+mm+'-'+dd;
+    var today = yyyy + '-' + mm + '-' + dd;
     console.log("today = " + today)
-    //Function for the ng-repeat to filter
+        //Function for the ng-repeat to filter
     $scope.comparator = function() {
         return function(item) {
             console.log(item.dateInit);
-        	if($scope.modalBusqueda.deporte == 'Cualquier deporte' || $scope.modalBusqueda.deporte == item.sport) {
-        		if(($scope.modalBusqueda.fecha == 'Cualquier día' &&  item.dateEnd >= today ) || ($scope.modalBusqueda.fecha >= item.dateInit && $scope.modalBusqueda.fecha <= item.dateEnd))	{
-        			var valorRangeSliderPrecios = $("#rango_precios").prop("value");
-        			if(valorRangeSliderPrecios == undefined) {
-        				valorRangeSliderPrecios = [0, 100000];
-        			}
-        			else valorRangeSliderPrecios = valorRangeSliderPrecios.split(";");
-        			if(valorRangeSliderPrecios[0] <= item.money && valorRangeSliderPrecios[1] >= item.money) {
-        				return true;
-        			}
-        			else return false;
-        		}
-        		else return false;
-        	}
-        	else return false;
+            if ($scope.modalBusqueda.deporte == 'Cualquier deporte' ||  $scope.modalBusqueda.deporte == item.sport) {
+                if (($scope.modalBusqueda.fecha == 'Cualquier día' && item.dateEnd >= today) || ($scope.modalBusqueda.fecha >= item.dateInit && $scope.modalBusqueda.fecha <= item.dateEnd)) {
+                    var valorRangeSliderPrecios = $("#rango_precios").prop("value");
+                    if (valorRangeSliderPrecios == undefined) {
+                        valorRangeSliderPrecios = [0, 100000];
+                    } else valorRangeSliderPrecios = valorRangeSliderPrecios.split(";");
+                    if (valorRangeSliderPrecios[0] <= item.money && valorRangeSliderPrecios[1] >= item.money) {
+                        return true;
+                    } else return false;
+                } else return false;
+            } else return false;
         }
     }
 
