@@ -42,14 +42,15 @@
                 <div class="col s3 m4">&nbsp</div>
             </div>
             <!--///////////////RESULTATS DEL SEARCH///////////////-->
-            <div id="list-canvas">
+            <div id="list-canvas" >
                 <div class="container">
                     <!-- statr products list -->
                     <!--/ end items list -->
                     <div class="section">
                         <div id="products" class="row">
                             <div class="product-sizer"></div>
-                            <div ng-repeat="post in posts | orderBy: ordenFiltro | filter: comparator()"  > <!--repeat-done="inicializeImages()"-->
+                            <div ng-repeat="post in posts | orderBy: ordenFiltro | filter: comparator()">
+                                <!--repeat-done="inicializeImages()"-->
                                 <!--USUARIOS-->
                                 <div class="product col s12 m4 l3" id="cardBySalvaAndMarc">
                                     <div class="card small hoverable" id="cardHeightMax">
@@ -144,8 +145,7 @@
                         <label for="input-select">¿Qué deporte?</label>
                         <div id="input-select" ng-click="open_select_sport()" class="row">
                             <div ng-model="hola2" class="input-field col s12">
-                                
-                                <select id="select_sport"  ng-model="modalBusqueda.deporte" class="browser-default" required>
+                                <select id="select_sport" ng-model="modalBusqueda.deporte" class="browser-default" required>
                                     <option value="Qualquier deporte" disabled>Qualquier deporte</option>
                                     <option value="Ski">Ski</option>
                                     <option value="Surf">Surf</option>
