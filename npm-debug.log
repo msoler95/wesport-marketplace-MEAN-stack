@@ -7,7 +7,7 @@
 6 silly lifecycle OpenShift-Sample-App@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle OpenShift-Sample-App@1.0.0~start: OpenShift-Sample-App@1.0.0
 8 verbose lifecycle OpenShift-Sample-App@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle OpenShift-Sample-App@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/msoler95/Desktop/wesport/node_modules/.bin:/usr/local/heroku/bin:/Users/msoler95/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/msoler95/Library/Android/sdk/tools:/Users/msoler95/Library/Android/sdk/platform-tools
+9 verbose lifecycle OpenShift-Sample-App@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/msoler95/Desktop/wesport/node_modules/.bin:/usr/local/opt/qt@5.5/bin:/usr/local/heroku/bin:/Users/msoler95/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/msoler95/Library/Android/sdk/tools:/Users/msoler95/Library/Android/sdk/platform-tools
 10 verbose lifecycle OpenShift-Sample-App@1.0.0~start: CWD: /Users/msoler95/Desktop/wesport
 11 silly lifecycle OpenShift-Sample-App@1.0.0~start: Args: [ '-c', 'node server.js' ]
 12 silly lifecycle OpenShift-Sample-App@1.0.0~start: Returned: code: 1  signal: null

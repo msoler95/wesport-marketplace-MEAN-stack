@@ -20,9 +20,14 @@
                                         <label ng-class="{ active: newPost.sport }">¿Qué deporte?</label>
                                         <select id="inputDeporte" ng-model="newPost.sport" class="browser-default" required>
                                             <option value="" disabled="" selected=""> </option>
-                                            <option value="Ski">Ski</option>
-                                            <option value="Futbol">Surf</option>
-                                            <option value="Basket">Futbol</option>
+                                                <option value="Esquí">Esquí</option>
+                                                <option value="Kitesurf">Kitesurf</option>
+                                                <option value="Natación">Natación</option>
+                                                <option value="Padel">Padel</option>
+                                                <option value="Snow">Snow</option>
+                                                <option value="Surf">Surf</option>
+                                                <option value="Tenis">Tenis</option>
+                                                <option value="Windsurf">Windsurf</option>
                                         </select>
                                     </div>
                                     <div class="col s12 m12">
@@ -71,10 +76,21 @@
                     <div class="col s4 m5 ">&nbsp</div>
                     <div class="col s6 m4">
                         <ul id="dropdown2" class="dropdown-content">
-                            <li><a ng-click="mostrarDeporte('Ski')" class="blue-text text-lighten-2 light">Ski</a> </li>
-                            <li><a ng-click="mostrarDeporte('Basket')" class="blue-text text-lighten-2 light">Basket</a></li>
-                            <li><a ng-click="mostrarDeporte('Futbol')" class="blue-text text-lighten-2 light">Futbol</a></li>
-                            <li><a ng-click="mostrarDeporte('Todos')" class="blue-text text-lighten-2 light">Todos</a> </li>
+                            <li><a ng-click="mostrarDeporte('Esquí')" class="blue-text text-lighten-2 light">Esquí</a> </li>
+                            <li><a ng-click="mostrarDeporte('Kitesurf')" class="blue-text text-lighten-2 light">Kitesurf</a></li>
+                            <li><a ng-click="mostrarDeporte('Natación')" class="blue-text text-lighten-2 light">Natación</a></li>
+                            <li><a ng-click="mostrarDeporte('Padel')" class="blue-text text-lighten-2 light">Padel</a> </li>
+                            <li><a ng-click="mostrarDeporte('Snow')" class="blue-text text-lighten-2 light">Snow</a> </li>
+                            <li><a ng-click="mostrarDeporte('Surf')" class="blue-text text-lighten-2 light">Surf</a> </li>
+                            <li><a ng-click="mostrarDeporte('Tenis')" class="blue-text text-lighten-2 light">Tenis</a> </li>
+                            <li><a ng-click="mostrarDeporte('Windsurf')" class="blue-text text-lighten-2 light">Windsurf</a> </li>
+
+
+
+
+
+
+
                         </ul>
                         <div class="chip blue lighten-2 white-text dropdown-button" id="dropdownFiltros2" data-activates="dropdown2">{{botondeporteHide}} <i class="mdi-hardware-keyboard-arrow-down"></i></div>
                     </div>
@@ -125,9 +141,14 @@
                         <label ng-class="{ active: postDuringEdit.sport }">¿Qué deporte?</label>
                         <select id="inputDeporte" ng-model="postDuringEdit.sport" class="browser-default" required>
                             <option value="" disabled="" selected=""> </option>
-                            <option value="Ski">Ski</option>
-                            <option value="Futbol">Futbol</option>
-                            <option value="Basket">Basket</option>
+                            <option value="Esquí">Esquí</option>
+                            <option value="Kitesurf">Kitesurf</option>
+                            <option value="Natación">Natación</option>
+                            <option value="Padel">Padel</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Surf">Surf</option>
+                            <option value="Tenis">Tenis</option>
+                            <option value="Windsurf">Windsurf</option>
                         </select>
                     </div>
                     <div class="col s12 m12">
