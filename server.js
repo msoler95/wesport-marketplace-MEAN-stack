@@ -38,9 +38,6 @@ app.get('*', function(req, res){
   res.sendfile(__dirname + '/public/index.html');
 });
 
-//Vigilar amb les fotos al fer el deploy
-var port = config.serverPort;	//80 //8080
-var adress = config.serverUrl; //var adress = "178.62.35.246"; //localhost 
 
 
 
