@@ -38,9 +38,11 @@ app.get('*', function(req, res){
   res.sendfile(__dirname + '/public/index.html');
 });
 
+//Vigilar amb les fotos al fer el deploy
+var port = config.serverPort;	//80 //8080
+var adress = config.serverUrl; //var adress = "178.62.35.246"; //localhost 
 
+http.createServer(app).listen(port, adress, function() {
+	console.log('Conected on local:8080! :D' + new Date() )
+});
 
-
-http.createServer(app, function() {
-	console.log('Conectado!');
-}).listen(8080);
