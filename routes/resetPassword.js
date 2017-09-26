@@ -29,7 +29,7 @@ router.post('/', function(req, res, next) {
 
                 // Send the email
                 var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: 'msoler955', pass: 'marcmarc00' } });
-                var mailOptions = { from: 'team@wesport.ml', to: req.body.mail, subject: 'Reiniciar mi contraseña', text: 'Hello,\n\n' + 'Haz click en el siguiente enlace para reiniciar la contraseña: \n' + mainUrl + '/resetMyPassword/' + resetPassword.token + '.\n' };
+                var mailOptions = { from: 'team@wesport.ml', to: req.body.mail, subject: 'Reiniciar mi contraseña', text: 'Hello,\n\n' + 'Haz click en el siguiente enlace para reiniciar la contraseña: \n' + mainUrl + '/#!/resetMyPassword/' + resetPassword.token + '.\n' };
                 transporter.sendMail(mailOptions, function(err) {
                     if (err) {
                         console.log(err);
