@@ -5,5 +5,5 @@ exports.db_path = 'mongodb://localhost/example_07';
 exports.confirmationUrl = "http://178.62.35.246:8080/user/confirmation" //"wespo.es/user/confirmation";
 exports.mainUrl = "http://178.62.35.246:8080";
 
-exports.serverPort = '8080'
+exports.serverPort = '80'
 exports.serverUrl = '178.62.35.246'
