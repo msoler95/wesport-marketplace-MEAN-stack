@@ -241,4 +241,3 @@ function initAutocomplete() {
     var searchBox = new google.maps.places.SearchBox(input);
 
 }
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn9-AkWH3dficJK-L7kR8a0BLliAcN3Xg&libraries=places&callback=initAutocomplete" async defer></script>
