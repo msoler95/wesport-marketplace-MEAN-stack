@@ -1,7 +1,9 @@
-FROM node:6.10-alpine
-
+FROM node:6-alpine
+RUN apk update && apk add python make g++
 WORKDIR /app
+
+COPY ["package.json", "package-lock.json*", "./"]
+RUN npm install
+
 COPY . .
-RUN yarn install --production
-CMD ["npm install"]
 CMD ["node", "server.js"]

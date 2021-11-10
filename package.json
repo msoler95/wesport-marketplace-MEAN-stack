@@ -19,7 +19,7 @@
     "url": "https://github.com/openshift/origin-server"
   },
   "engines": {
-    "node": "^6.10.3",
+    "node": "8",
     "npm": "^1.0.0"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
     "mongoose": "^4.9.8",
     "nodemailer": "^4.0.1",
     "validator": "^7.0.0",
-    "images": "3.2.3",
     "express-validator": "4",
     "multer": "1.4.3"
   },

@@ -6,7 +6,6 @@ var models = require('./models');
 var express_jwt = require('express-jwt');
 var config = require('./config');
 var cors = require('cors');
-var images = require('images');
 var expressValidator = require('express-validator');
 mongoose.connect(config.db_path);
 

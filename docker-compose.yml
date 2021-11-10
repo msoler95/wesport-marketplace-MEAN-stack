@@ -1,0 +1,15 @@
+version: '3.8'
+services: 
+  node-web:
+    build: .
+    ports: 
+      - "8080:8080"
+    depends_on: 
+      - database
+  database:
+    image: mongo
+    restart: always 
+    volumes: 
+      - my_data:/data/db 
+volumes: 
+  my_data: 
