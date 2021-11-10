@@ -8,7 +8,7 @@ var config = require('./config');
 var cors = require('cors');
 var images = require('images');
 var expressValidator = require('express-validator');
-mongoose.connect('mongodb://0.0.0.0:27017/DB');
+mongoose.connect(config.db_path);
 
 
 //Initialize models defined.
