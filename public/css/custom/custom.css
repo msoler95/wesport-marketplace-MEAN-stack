@@ -1,0 +1,251 @@
+/*================================================================================
+  Item Name: Materialize - Material Design Admin Template
+  Version: 3.1
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+#section-custom {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#container-custom {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 100% !important;
+}
+
+#no-padding {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#no-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.no-padding-or-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .bottom {
+        position: fixed;
+        left: 0;
+        top: 54px;
+        width: 100%;
+    }
+    #container-chips {
+        margin-top: 57px !important;
+    }
+    nav,
+    nav .nav-wrapper i,
+    nav a.button-collapse,
+    nav a.button-collapse i {
+        height: 55px;
+    }
+    .brand_logo {
+        padding-bottom: 0px !important;
+    }
+    .brand-logo {
+        padding-bottom: 0px !important;
+        padding-top: 9px !important;
+    }
+    ul.side-nav.leftside-navigation {
+        top: 55px !important;
+    }
+}
+
+.progress {
+    margin-top: 0px;
+    z-index: 100;
+    margin-bottom: 0px;
+}
+
+.chip i.material-icons {
+    float: none;
+}
+
+#container-chips {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    z-index: 1;
+    max-width: 100% !important;
+}
+
+.sidebar-collapse {
+    position: fixed !important;
+    left: 15px !important;
+    top: 7px !important;
+}
+
+#imgCard {
+    max-height: 39%;
+}
+
+#cardBySalvaAndMarc {
+    margin-bottom: 15px;
+    width: 285px;
+}
+
+#cardImageHeight {
+    position: relative;
+    height: 140px;
+}
+
+h1 {
+    margin: 0 !important;
+    font-size: 27px !important;
+}
+
+#cardHeightMax {
+    height: 264px;
+}
+
+.menu-active {
+    background-color: rgba(128, 128, 128, 0.14);
+}
+
+.titulo-card {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.superior {
+    z-index: 12;
+}
+
+.sidebar-collapse {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+#searchModal {
+    max-width: 500px;
+    background-color: white;
+    height: 95% !important;
+    max-height: 95% !important;
+    top: 10px !important;
+}
+
+.spacer-modal {
+    position: relative;
+    top: -7px;
+}
+
+h5 {
+    font-size: 1.30rem !important;
+    margin: 0.82rem 0 0.656rem 0;
+}
+
+#telefonSize {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 574px) {
+    
+    #cardBySalvaAndMarc {
+        width: 100% !important;
+    }
+}
+
+.picker__date-display {
+    display: none;
+}
+
+.picker__clear {
+    display: none;
+}
+
+.picker__today {
+    display: none;
+}
+
+#imagenUsuario {
+    top: -60px;
+}
+
+.page-topbar {
+    position: sticky;
+    z-index: 100;
+}
+
+
+}
+
+/*Maps*/
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    z-index: 1304;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#pac-input {
+    text-overflow: ellipsis;
+    z-index: 1304;
+}
+#pac-input:focus {
+    border-color: #4d90fe;
+    z-index: 1304;
+}
+.pac-container {
+    font-family: Roboto;
+    z-index: 1304;
+}
+#type-selector {
+    color: #fff;
+    z-index: 1304;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+#type-selector label {
+    z-index: 1304;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+#target {
+    z-index: 1304;
+    width: 345px;
+}
+
+/*Fin maps*/
+#title-personal-card {
+    border-top-width: 0px;
+    margin-top: 4px;
+    margin-left: 3px;
+}
+@media only screen and (min-width: 993px) {
+    #card-work {
+        margin-top: 0px !important;
+    }
+    
+    #menu-button-img {}
+}
+.light-blue-marc {
+    background-color: #00bcd4 !important;
+}

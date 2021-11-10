@@ -1,0 +1,4 @@
+public/uploads/*
+securecopy/*
+/node_modules
+.DS_Store

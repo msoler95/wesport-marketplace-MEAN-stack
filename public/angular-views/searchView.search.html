@@ -1,0 +1,260 @@
+<div class="col s12" id="no-padding">
+    <div id="test1" class="col s12">
+        <div class="row" id="no-margin">
+            <!--///////////////SEARCH///////////////-->
+            <div class="" id="container-chips" ng-click="openSearchModal()">
+                <div class="chip  ">
+                    <i class="mdi-social-whatshot tiny"></i> {{busqueda.deporte}}
+                </div>
+                <div class="chip  ">
+                    <i class="mdi-action-room tiny"></i> {{busqueda.ubicacion}}
+                </div>
+                <div class="chip">
+                    <i class="mdi-action-schedule tiny"></i> {{busqueda.fecha}}
+                </div>
+                <div class="chip">
+                    <i class="mdi-editor-attach-money tiny"></i> {{busqueda.precio}}€/h
+                </div>
+                <!-- <div class="chip">
+                    <i class="mdi-social-school tiny"></i> {{busqueda.nivel}}
+                </div>
+                <div class="chip">
+                    <i class="mdi-social-people tiny"></i> {{busqueda.tipo}}
+                </div>
+                <div class="chip">
+                    <i class="mdi-social-people tiny"></i> {{busqueda.material}}
+                </div>
+ --></div>
+            <div class="divider"></div>
+            <br>
+            <!--///////////////FILTROS///////////////-->
+            <div class="row" id="no-margin">
+                <div class="col s4 m5 ">&nbsp</div>
+                <div class="col s6 m4">
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a ng-click="ordenar('precioAsc')" class="blue-text text-lighten-2 light">Precio ↑ </a> </li>
+                        <li><a ng-click="ordenar('precioDesc')" class="blue-text text-lighten-2 light">Precio ↓</a></li>
+                        <!-- <li><a ng-click="ordenar('valoracionAsc')" class="blue-text text-lighten-2 light">Valoración ↑</a></li>
+                        <li><a ng-click="ordenar('valoracionDesc')" class="blue-text text-lighten-2 light">Valoración ↓</a></li> -->
+                    </ul>
+                    <div class="chip blue lighten-2 white-text dropdown-button" id="dropdownFiltros" data-activates="dropdown2">{{botonFiltro}} <i class="mdi-hardware-keyboard-arrow-down"></i></div>
+                </div>
+                <div class="col s3 m4">&nbsp</div>
+            </div>
+            <!--///////////////RESULTATS DEL SEARCH///////////////-->
+            <div id="list-canvas" >
+                <div class="container">
+                    <!-- statr products list -->
+                    <!--/ end items list -->
+                    <div class="section">
+                        <div id="products" class="row">
+                            <div class="product-sizer"></div>
+                            <div ng-repeat="post in posts | orderBy: ordenFiltro | filter: comparator()">
+                                <!--repeat-done="inicializeImages()"-->
+                                <!--USUARIOS-->
+                                <div class="product col s12 m4 l3" id="cardBySalvaAndMarc">
+                                    <div class="card small hoverable" id="cardHeightMax">
+                                        <div ng-show="busqueda.deporte == 'Cualquier deporte'" style="    POSITION: ABSOLUTE;
+    z-index: 10;
+    color: #00bcd4;" class="card-content  light-blue-marc">
+                                            <text class="white-text left-align">{{post.sport}}</text>
+                                        </div>
+                                        <div class="card-image waves-effect waves-block waves-light" id="cardImageHeight">
+                                            <!--  <a href="#" class="btn-floating btn-large btn-price waves-effect waves-light  pink accent-2">$189</a> -->
+                                            <img class="activator" src="{{post.idUser.avatar}}" alt="product-img">
+                                        </div>
+                                        <ul class="card-action-buttons">
+                                            <li><a class="btn-floating activator waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="card-content">
+                                            <h5 class="titulo-card" id="title-personal-card"> {{post.idUser.name}} <span ng-show="post.distance != null" style="color: #9e9e9e;
+     color: #9e9e9e; font-size: 0.8rem;padding-left: 2px;">(A {{post.distance}} km, en {{post.loc.name}})</span><span ng-hide="post.distance != null" style="color: #9e9e9e;
+     color: #9e9e9e; font-size: 0.8rem;padding-left: 2px;">(En {{post.loc.name}})</span></h5>
+                                            <!-- <ng-rate-it ng-model="usuario.estrellas" min= "0" max = "5" step = "0.5" read-only = "true" resetable = "false" star-width = "16" star-height = "16" >   
+                                                              </ng-rate-it> -->
+                                            <div class="row" style="margin-bottom: 5px;">
+                                                <div class="col s12" style="padding-right: 0; ">
+                                                    <span ng-show="busqueda.fecha == 'Cualquier día'" style="color: #9e9e9e;
+     color: #9e9e9e; font-size: 0.8rem;padding-left: 2px;">Del {{post.dateInit | date :  "dd/MM/y"}} al {{post.dateEnd | date :  "dd/MM/y"}}</span>
+                                                    <!-- <ng-rate-it ng-model="usuario.estrellas" min= "0" max = "5" step = "0.5" read-only = "true" resetable = "false" star-width = "16" star-height = "16" >   
+                                                              </ng-rate-it> -->
+                                                </div>
+                                                <!-- <div class="col s2" style="padding-left: 3px; ">
+                                                              <text style="     top: -2px;
+                                                                position: relative;
+                                                                font-size: 12px;
+                                                                color: gray;
+                                                                padding-bottom: 0px;" >(4)</text>
+                                                          </div> -->
+                                                <!--  
+                                                          <div class="col s12">
+                                                            <flag country="es" size="16"></flag>
+                                                            <flag country="us" size="16"></flag>
+                                                          </div>
+                                                          <div class="col s12">
+                                                            {{usuario.anys}} años
+                                                          </div> -->
+                                            </div>
+                                        </div>
+                                        <!--      
+                                                  <div class="card-content" style="     color: #9e9e9e;
+    font-size: 0.9rem;
+    top: 0.8rem;
+    left: 0.75rem; padding-top: 10px; padding-left: 10px; padding-bottom: 10px;">
+                                                       <text style="  font-size: 12px; color: gray;" >Clase:</text><br>
+                                                       <text  >De 1 a 4 alumnos</text><br>
+                                                       <text>Mínimo {{usuario.minimHoresPerClasse}}h/clase</text><br>
+                                                       <text>Cede material</text>
+
+                                                       
+
+                                                       <p>A 5 km</p>
+                                                       <div class="col s12">
+                                                            <flag country="es" size="16"></flag>
+                                                            <flag country="us" size="16"></flag>
+                                                          </div>
+                                                  </div> -->
+                                        <div class="card-action " style="padding: 11px">
+                                            <div class="row">
+                                                <div class="col s5" style="    margin-top: 5px">
+                                                    <h5 class="no-padding-or-margin" style="    font-size: 17px !important;"> {{post.money}} €/h </h5>
+                                                </div>
+                                                <div class="col s1  no-padding-or-margin"> &nbsp </div>
+                                                <div class="col s6 no-padding-or-margin">
+                                                    <h6><a  href id='telefonSize' style="font-size: 15px !important;     margin-right: 9px;" ><span class="blue-text text-lighten-2 " ng-click="sweetAlert(post._id, post.idUser.name)">Ver telefono</span></a></h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-reveal">
+                                            <span class="card-title grey-text text-darken-4">Descripción de la clase: <i class="mdi-navigation-close right"></i></span>
+                                            <p>{{post.description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--///////////////MODAL DEL SEARCH///////////////-->
+            <div id="searchModal" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <!--Deporte-->
+                    <div class="col s12">
+                        <label for="input-select">¿Qué deporte?</label>
+                        <div id="input-select" ng-click="open_select_sport()" class="row">
+                            <div ng-model="hola2" class="input-field col s12">
+                                <select id="select_sport" ng-model="modalBusqueda.deporte" class="browser-default" required>
+                                    <option value="Qualquier deporte" disabled>Qualquier deporte</option>
+                                        <option value="Esquí">Esquí</option>
+                                        <option value="Kitesurf">Kitesurf</option>
+                                        <option value="Natación">Natación</option>
+                                        <option value="Padel">Padel</option>
+                                        <option value="Snow">Snow</option>
+                                        <option value="Surf">Surf</option>
+                                        <option value="Tenis">Tenis</option>
+                                        <option value="Windsurf">Windsurf</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col s12">
+                                <!-- <label for="last_name">¿Dónde?</label> -->
+                                <label for="pac-input">¿Dónde?</label>
+                                <input ng-model="modalBusqueda.ubicacion" id="pac-input" type="text" placeholder="Madrid, Barcelona...">
+                                <div id="map"></div>
+                                <!--    <input id="searchTextField" placeholder="Enter a city"  type="text"> -->
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col s12">
+                                <label for="inputCreated">¿Cuando?</label>
+                                <input input-date class="date-picker" ng-model="modalBusqueda.fecha" type="date" name="created" id="inputCreated" container="body" format="dd/mm/yyyy" />
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <text class="grey-text light">Precio/hora: </text>
+                        <div class="row">
+                            <div class="col s12">
+                                <div id="rango_precios"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <!-- <text class="grey-text light">Nivel: </text>
+                        <div class="row">
+                            <div class="col s12">
+                                <div id="rango_nivel"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="switch">
+                                    <text class="grey-text light"> ¿Tienes material? </text>
+                                    <label>
+                                        No
+                                        <input ng-model="modalBusqueda.conMaterial" type="checkbox">
+                                        <span class="lever"></span> Sí
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a ng-click="busca()" class="waves-effect waves-red btn-flat modal-action modal-close">Buscar</a>
+                    <a class="waves-effect waves-red btn-flat modal-action modal-close">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#dropdownFiltros').dropdown();
+
+    $('select').material_select();
+    $('input-field').material_select();
+    $("#rango_precios").ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 200,
+        from: 5,
+        to: 110,
+        prefix: "€"
+    });
+
+    $("#rango_nivel").ionRangeSlider({
+        grid: true,
+        from: 1,
+        values: [
+            "Ninguno", "Bajo", "Medio",
+            "Alto", "Profesional"
+        ]
+    });
+
+    //Calendario
+    $('.date-picker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year
+        container: $('body'),
+        format: 'yyyy-mm-dd',
+        onOpen: function() {
+            $('.btn-flat picker__close').text('Cerrar');
+        }
+
+    });
+
+
+
+
+});
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn9-AkWH3dficJK-L7kR8a0BLliAcN3Xg&libraries=places&callback=initAutocomplete" async defer></script>

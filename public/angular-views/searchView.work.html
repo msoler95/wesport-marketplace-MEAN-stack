@@ -1,0 +1,277 @@
+<div id="list-canvas2">
+    <div class="container">
+        <!-- statr products list -->
+        <!--/ end items list -->
+        <div class="section">
+            <div id="products" class="row">
+                <div class="product-sizer"></div>
+                <!--USUARIOS-->
+                <div class="product col s12 m12 l12">
+                    <div id="card-work" class="card hoverable" style="       margin-top: 45px; margin-bottom: 30px;">
+                        <div class="card-title">
+                            <h5 style="margin-left: 23px;
+    margin-top: 23px;
+    margin-bottom: 13px;">Añadir clase:</h5>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m4">
+                                    <div class="col s12 m12">
+                                        <label ng-class="{ active: newPost.sport }">¿Qué deporte?</label>
+                                        <select id="inputDeporte" ng-model="newPost.sport" class="browser-default" required>
+                                            <option value="" disabled="" selected=""> </option>
+                                                <option value="Esquí">Esquí</option>
+                                                <option value="Kitesurf">Kitesurf</option>
+                                                <option value="Natación">Natación</option>
+                                                <option value="Padel">Padel</option>
+                                                <option value="Snow">Snow</option>
+                                                <option value="Surf">Surf</option>
+                                                <option value="Tenis">Tenis</option>
+                                                <option value="Windsurf">Windsurf</option>
+                                        </select>
+                                    </div>
+                                    <div class="col s12 m12">
+                                        <br>
+                                        <input ng-model="newPost.place" id="pac-input" type="text" placeholder="¿Dónde?">
+                                        <div id="map"></div>
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="date-picker1">Desde</label>
+                                        <input input-date ng-model="newPost.dateInit" type="date" name="created" id="date-picker1" />
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="date-picker2">Hasta</label>
+                                        <input input-date ng-model="newPost.dateEnd" type="date" name="created" id="date-picker2" />
+                                    </div>
+                                </div>
+                                <div class=" col s12 m6">
+                                    <div class="input-field col s12 m12">
+                                        <input id="first_name" ng-model="newPost.money" type="number">
+                                        <label ng-class="{ active: newPost.money }" for="first_name">Precio(€)/h</label>
+                                    </div>
+                                    <div class="input-field col s12 m12">
+                                        <input id="first_name" ng-model="newPost.contact" type="number">
+                                        <label ng-class="{ active: newPost.contact }" for="first_name">Teléfono</label>
+                                    </div>
+                                    <div class="input-field col s12 m12">
+                                        <textarea id="textarea2" ng-model="newPost.description" class="materialize-textarea" length="120"></textarea>
+                                        <label ng-class="{ active: newPost.description }" for="textarea1" class="">Descripción de la clase</label>
+                                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action " style="padding: 11px">
+                            <button ng-click="publicarPost()" class="btn waves-effect blue blue-light" type="submit" name="action">Publicar
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row" style="margin-left:0; margin-bottom: 10px">
+                    <div class="col s4 m5 ">&nbsp</div>
+                    <div class="col s6 m4">
+                        <ul id="dropdown2" class="dropdown-content">
+                            <li><a ng-click="mostrarDeporte('Esquí')" class="blue-text text-lighten-2 light">Esquí</a> </li>
+                            <li><a ng-click="mostrarDeporte('Kitesurf')" class="blue-text text-lighten-2 light">Kitesurf</a></li>
+                            <li><a ng-click="mostrarDeporte('Natación')" class="blue-text text-lighten-2 light">Natación</a></li>
+                            <li><a ng-click="mostrarDeporte('Padel')" class="blue-text text-lighten-2 light">Padel</a> </li>
+                            <li><a ng-click="mostrarDeporte('Snow')" class="blue-text text-lighten-2 light">Snow</a> </li>
+                            <li><a ng-click="mostrarDeporte('Surf')" class="blue-text text-lighten-2 light">Surf</a> </li>
+                            <li><a ng-click="mostrarDeporte('Tenis')" class="blue-text text-lighten-2 light">Tenis</a> </li>
+                            <li><a ng-click="mostrarDeporte('Windsurf')" class="blue-text text-lighten-2 light">Windsurf</a> </li>
+
+
+
+
+
+
+
+                        </ul>
+                        <div class="chip blue lighten-2 white-text dropdown-button" id="dropdownFiltros2" data-activates="dropdown2">{{botondeporteHide}} <i class="mdi-hardware-keyboard-arrow-down"></i></div>
+                    </div>
+                    <div class="col s3 m4">&nbsp</div>
+                </div>
+                <div class="row" style="margin-left:0; margin-bottom: 10px">
+                    <div ng-repeat="post in posts | filter: deporteAMostrar | orderBy: 'dateInit'">
+                        <!--USUARIOS-->
+                        <div class="product col s12 m4 l2" id="cardBySalvaAndMarc">
+                            <div class="card hoverable" id="cardHeightMax">
+                                <div class="card-content blue light-blue">
+                                    <text class="white-text left-align">{{post.sport}}</text>
+                                    <a href ng-click="deletePost(post._id, $index)"><span ng-click="donothing()" class="mdi-action-delete white-text " style="float: right"></span></a>
+                                    <a href ng-click="openEditPost($index)"><span   class="mdi-editor-mode-edit white-text " style="float: right">&nbsp;</span></a>
+                                </div>
+                                <div class="card-action">
+                                    <span class="mdi-communication-location-on"></span>
+                                    <text> {{post.loc.name}}</text>
+                                    <br>
+                                    <span class="mdi-image-timer"></span>
+                                    <text type="date" > {{post.dateInit | date :  "dd/MM/y"}} - {{post.dateEnd | date :  "dd/MM/y"}}</text>
+                                    <br>
+                                    <span class="mdi-editor-attach-money"></span>
+                                    <text> {{post.money}} €/h</text>
+                                    <br>
+                                    <span class="mdi-maps-local-phone"></span>
+                                    <text> {{post.contact}}</text>
+                                    <br>
+                                    <span class="mdi-editor-border-color"></span>
+                                    <text> {{post.description}}</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal edit-->
+<div id="modalEdit" class="modal modal-fixed-footer">
+    <div class="modal-content" style="    top: 26px;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="col s12 m12">
+                        <label ng-class="{ active: postDuringEdit.sport }">¿Qué deporte?</label>
+                        <select id="inputDeporte" ng-model="postDuringEdit.sport" class="browser-default" required>
+                            <option value="" disabled="" selected=""> </option>
+                            <option value="Esquí">Esquí</option>
+                            <option value="Kitesurf">Kitesurf</option>
+                            <option value="Natación">Natación</option>
+                            <option value="Padel">Padel</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Surf">Surf</option>
+                            <option value="Tenis">Tenis</option>
+                            <option value="Windsurf">Windsurf</option>
+                        </select>
+                    </div>
+                    <div class="col s12 m12">
+                        <br>
+                        <input ng-model="postDuringEdit.loc.name" id="pac-input2" type="text" placeholder="¿Dónde?">
+                        <div id="map2"></div>
+                    </div>
+                    <div class="col s6">
+                        <label for="dateInitAux">Disponibilidad del día</label>
+                        <input input-date ng-model="dateInitAux" type="date" name="created" id="date-picker1-modal" />
+                    </div>
+                    <div class="col s6">
+                        <label for="dateEndAux">Al día</label>
+                        <input input-date ng-model="dateEndAux" type="date" name="created" id="date-picker2-modal" />
+                    </div>
+                </div>
+                <div class=" col s12 m6">
+                    <div class="input-field col s12 m12">
+                        <input id="first_name" ng-model="postDuringEdit.money" type="number">
+                        <label ng-class="{ active: postDuringEdit.money }" for="first_name">Precio(€)/h</label>
+                    </div>
+                    <div class="input-field col s12 m12">
+                        <input id="first_name" ng-model="postDuringEdit.contact" type="number">
+                        <label ng-class="{ active: postDuringEdit.contact }" for="first_name">Teléfono</label>
+                    </div>
+                    <div class="input-field col s12 m12">
+                        <textarea id="textarea2" ng-model="postDuringEdit.description" class="materialize-textarea" ></textarea>
+                        <label ng-class="{ active: postDuringEdit.description }" for="textarea1" class="">Descripción de la clase</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href ng-click="cancelModalPost()" class="waves-effect waves-red btn-flat modal-action modal-close">Cancelar</a>
+        <a href ng-click="acceptModalPost()" class="waves-effect waves-green btn-flat modal-action modal-close">Aceptar</a>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#dropdownFiltros').dropdown();
+    $('#dropdownFiltros2').dropdown();
+    //Calendario
+    $('#date-picker1').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year
+        format: 'yyyy-mm-dd',
+        onOpen: function() {
+            $('.btn-flat picker__close').text('Cerrar');
+        }
+
+    });
+    $('#date-picker2').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year
+        format: 'yyyy-mm-dd',
+        onOpen: function() {
+            $('.btn-flat picker__close').text('Cerrar');
+        }
+
+    });
+});
+</script>
+<!--Para buscar en maps-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn9-AkWH3dficJK-L7kR8a0BLliAcN3Xg&libraries=places&callback=initAutocomplete" async defer></script>
+<!-- <div class="product col s12 m12 l12">
+                    <div id="card-work" class="card hoverable" style="       margin-top: 45px; margin-bottom: 30px;">
+                        <div class="card-title">
+                            <h5 style="margin-left: 23px;
+    margin-top: 23px;
+    margin-bottom: 13px;">Añadir clase:</h5>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m4">
+                                    <div class="col s12 m12">
+                                        <label  ng-class="{ active: newPost.sport }" >¿Qué deporte?</label>
+                                        <select id="inputDeporte" ng-model="newPost.sport" class="browser-default" required>
+                                            <option value="" disabled="" selected=""> </option>
+                                            <option value="Ski">Ski</option>
+                                            <option value="Futbol">Futbol</option>
+                                            <option value="Basket">Basket</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col s12 m12">
+                                        <br>
+                                        <input ng-model="newPost.place" id="pac-input" type="text" placeholder="¿Dónde?">
+                                        <div id="map"></div>
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="date-picker1">Disponibilidad del día</label>
+                                        <input input-date ng-model="newPost.dateInit" type="date" name="created" id="date-picker1" />
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="date-picker2">Al día</label>
+                                        <input input-date  ng-model="newPost.dateEnd" type="date" name="created" id="date-picker2" />
+                                    </div>
+                                    
+                                </div>
+                                <div class=" col s12 m6">
+
+                                    <div class="input-field col s12 m12">
+                                        <input id="first_name" ng-model="newPost.money" type="number">
+                                        <label ng-class="{ active: newPost.money }" for="first_name">Precio(€)/h</label>
+                                    </div>
+                                    <div class="input-field col s12 m12">
+                                        <input id="first_name" ng-model="newPost.contact" type="number">
+                                        <label ng-class="{ active: newPost.contact }" for="first_name">Teléfono</label>
+                                    </div>
+                                    <div class="input-field col s12 m12">
+                                        <textarea id="textarea2" ng-model="newPost.description" class="materialize-textarea" length="120"></textarea>
+                                        <label ng-class="{ active: newPost.description }" for="textarea1" class="">Descripción de la clase</label>
+                                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action " style="padding: 11px">
+                            <button ng-click="publicarPost()" class="btn waves-effect blue blue-light" type="submit" name="action">Publicar
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
