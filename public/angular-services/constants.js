@@ -5,5 +5,5 @@ angular.module('WeSport')
 })
  
 .constant('API_ENDPOINT', {
-  url: 'http://localhost:8080'
+  url: 'http://0.0.0.0:8080'
 });

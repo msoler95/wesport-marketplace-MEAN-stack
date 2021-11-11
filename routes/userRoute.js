@@ -64,7 +64,9 @@ router.post('/register', function(req, res, next) {
                     }
 
                     // Send the email
-                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: 'msoler955', pass: 'marcmarc00' } });
+                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: 'msoler955', pass: 'th1s1smysup3s3cr3tp4ssw0rd' } });
+                    console.log('llego')
+                    console.log('transporter', transporter)
                     var mailOptions = { from: 'team@wesport.ml', to: user.mail, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + confirmationUrl + '/' + token.token + '.\n' };
                     transporter.sendMail(mailOptions, function(err) {
                         if (err) {
