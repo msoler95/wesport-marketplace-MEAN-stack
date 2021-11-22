@@ -46,6 +46,7 @@ router.post('/register', function(req, res, next) {
     var new_user = new User(userData);
     var old_pas = new_user.password;
     new_user.avatar = "uploads/invitado.png";
+    new_user.isVerified = true;
     bcrypt.hash(old_pas, null, null, function(err, hash) {
         new_user.password = hash;
         new_user.save(function(err, user) { //hace el insert
@@ -62,9 +63,9 @@ router.post('/register', function(req, res, next) {
                         console.log(err);
                         return res.json({ success: false, msg: err.message });
                     }
-
+                    else  res.json({ success: true, msg: 'This is a demo, so no email verification is needed. You can log in now' });
                     // Send the email
-                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: 'msoler955', pass: 'th1s1smysup3s3cr3tp4ssw0rd' } });
+                    /*var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: 'msoler955', pass: 'th1s1smysup3s3cr3tp4ssw0rd' } });
                     console.log('llego')
                     console.log('transporter', transporter)
                     var mailOptions = { from: 'team@wesport.ml', to: user.mail, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + confirmationUrl + '/' + token.token + '.\n' };
@@ -74,7 +75,7 @@ router.post('/register', function(req, res, next) {
                             return res.json({ success: false, msg: err.message });
                         } else
                             res.json({ success: true, msg: 'Te hemos enviado un correo electronico de confirmación' });
-                    });
+                    });*/
                 });
             }
         });
