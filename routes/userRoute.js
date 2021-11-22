@@ -45,7 +45,7 @@ router.post('/register', function(req, res, next) {
 
     var new_user = new User(userData);
     var old_pas = new_user.password;
-    new_user.avatar = "uploads/invitado.png";
+    new_user.avatar = "images/invitado.png";
     new_user.isVerified = true;
     bcrypt.hash(old_pas, null, null, function(err, hash) {
         new_user.password = hash;
