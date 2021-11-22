@@ -5,5 +5,5 @@ angular.module('WeSport')
 })
  
 .constant('API_ENDPOINT', {
-  url: 'http://165.227.137.29/:8080'
+  url: 'http://165.227.137.29:8080'
 });
